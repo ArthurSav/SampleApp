@@ -8,6 +8,8 @@ import io.c0nnector.github.sampleapp.MainActivity;
 import io.c0nnector.github.sampleapp.application.Application;
 
 @Module(
+        includes = DataModule.class,
+
         injects = {
                 Application.class,
                 MainActivity.class
