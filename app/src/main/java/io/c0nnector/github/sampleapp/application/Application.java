@@ -7,8 +7,10 @@ import android.content.Context;
 import javax.inject.Inject;
 
 import dagger.ObjectGraph;
+import io.c0nnector.github.sampleapp.BuildConfig;
 import io.c0nnector.github.sampleapp.modules.AppModule;
 import io.c0nnector.github.sampleapp.modules.Modules;
+import timber.log.Timber;
 
 /**
  * Application class
@@ -20,8 +22,24 @@ public class Application extends DaggerApplication {
     public void onCreate() {
         super.onCreate();
 
+        setupLogging();
+
         //dagger
         setupDagger(Modules.list(this));
+    }
+
+    /*****************************************************
+     * ---------------- * Logging * --------------------
+     *
+     *
+     *
+     ****************************************************/
+
+    private void setupLogging(){
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
     }
 
     /*****************************************************
